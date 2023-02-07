@@ -1,0 +1,9 @@
+#cloud-config
+users:
+  - name: ls-lab-2-user
+    groups: sudo
+    shell: /bin/bash
+    sudo: ['ALL=(ALL) NOPASSWD:ALL']
+    ssh-authorized-keys:
+      - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOch1nhLIPC0VVrwjgeN2gPEdLrImi+TD5hqDi+RZAHh khaledismaeel@yandex.ru
+
