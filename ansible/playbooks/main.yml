@@ -1,0 +1,7 @@
+- name: Run the playbook for installing Docker runtime
+  ansible.builtin.include_tasks:
+    file: install-docker-runtime.yml
+
+- name: Run the playbook for deploying the application
+  ansible.builtin.include_tasks:
+    file: deply-application.yml

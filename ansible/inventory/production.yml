@@ -1,0 +1,6 @@
+instances:
+  hosts:
+    ls-lab-2-instance:
+      ansible_host: "{{ instance_ip }}"
+      ansible_user: ls-lab-2-user
+      

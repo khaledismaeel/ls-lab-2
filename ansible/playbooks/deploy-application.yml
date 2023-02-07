@@ -1,0 +1,29 @@
+- name: Clone repo and deploy application
+  hosts: instances
+  become: true
+  tasks:
+    - name: Clone repository
+      ansible.builtin.git:
+        repo: https://github.com/khaledismaeel/ls-lab-2.git
+        dest: /opt/ls-lab-2
+        version: main
+
+    - name: Tear down existing services
+      community.docker.docker_compose:
+        project_src: /opt/ls-lab-2/app
+        state: absent
+
+    - name: Create and start services
+      community.docker.docker_compose:
+        project_src: /opt/ls-lab-2/app
+      register: output
+
+    - name: Set debug output
+      ansible.builtin.debug:
+        var: output
+
+    - name: Run `docker-compose up` again
+      community.docker.docker_compose:
+        project_src: /opt/ls-lab-2/app
+        build: true
+      register: output
